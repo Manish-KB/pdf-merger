@@ -1,0 +1,198 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #fc6767;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 90%;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.dotted-box {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pdf-logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+   margin: 10px;
+}
+
+#addPdfBtn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin: 10px;
+
+}
+.pdf-logo{
+    margin-bottom: 30px;
+}
+
+#addPdfBtn:hover {
+    background-color: #52a6ff;
+}
+
+#mergeBtn{
+    background-color: #0da4e0;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin: 10px;   
+}
+#mergeBtn:hover {
+    background-color: #4fccfd;
+}
+
+#downloadLink{
+    background-color: #4ac416;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+#downloadLink:hover {
+    background-color: #59df20;
+}
+ul {
+    list-style-type: none;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 5px;
+    background-color: white;
+    cursor: pointer;
+    min-width: 100px;
+}
+
+li {
+    margin: 5px 0;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(255, 255, 255); /* Ensure each item background is opaque /
+    z-index: 1; / Ensure the default z-index is set */
+    position: relative;
+    border-radius:0px ;
+    transition:background-color 0.2s;
+
+}
+
+li.dragging {
+    z-index: 1000; 
+    background-color: #d5d6d6; 
+}
+li:hover{
+    border-radius:5px ;
+    background-color: #f4f4f4; 
+    
+
+}
+
+li .remove-btn {
+    background-color: #f25710;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin: 10px;
+    font-size: small;
+}
+
+
+
+.privacy-notice {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.icon-text {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.icon-text svg {
+    margin-right: 5px;
+}
+
+
+.loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
