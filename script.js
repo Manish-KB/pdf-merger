@@ -4,6 +4,8 @@ document.getElementById('pdfFiles').addEventListener('change', (event) => {
     const fileList = document.getElementById('fileList');
     const files = event.target.files;
     const downloadLink = document.getElementById('downloadLink');
+    const addBtn=document.getElementById('addPdfBtn');
+    addBtn.textContent = 'Add File';
     fileList.style.display = 'block';
     downloadLink.style.display = 'none';
     for (const file of files) {
@@ -20,6 +22,7 @@ function addFileToList(file) {
     listItem.textContent = file.name;
     listItem.dataset.filename = file.name; 
     const removeBtn = document.createElement('button');
+    document.getElementById('mergeBtn').style.display='block';
     removeBtn.textContent = 'X';
     removeBtn.className = 'remove-btn';
     removeBtn.addEventListener('click', () => {
@@ -40,9 +43,10 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
         alert('Please select at least two PDF files to merge.');
         return;
     }
-
+    
+    document.getElementById('overlay').style.display = 'block';
     document.getElementById('loader').style.display = 'flex';
-
+    document.getElementById('mergeBtn').style.display='none';
     try {
         const mergedPdf = await PDFLib.PDFDocument.create();
 
@@ -59,11 +63,13 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
 
         const downloadLink = document.getElementById('downloadLink');
         const fileList = document.getElementById('fileList');
+        const addBtn=document.getElementById('addPdfBtn');
         downloadLink.href = url;
         downloadLink.download = 'merged.pdf';
         downloadLink.style.display = 'block';
         downloadLink.textContent = 'Download Merged PDF';
         fileList.style.display = 'none';
+        addBtn.textContent = 'Start Again';
 
         clearFileList();
         toggleMergeButton(0);
@@ -72,6 +78,7 @@ document.getElementById('mergeBtn').addEventListener('click', async () => {
         alert('An error occurred while merging the PDFs. Please try again.');
     } finally {
         document.getElementById('loader').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
     }
 });
 function toggleMergeButton(fileCount) {
